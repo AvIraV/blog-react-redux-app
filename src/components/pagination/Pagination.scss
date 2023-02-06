@@ -1,0 +1,8 @@
+@import '../../../style/variables.scss';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    color:  $text-title;
+   padding-bottom: 18px;
+}

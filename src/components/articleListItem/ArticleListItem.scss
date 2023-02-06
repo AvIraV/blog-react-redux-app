@@ -1,0 +1,111 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+.post-item {
+    /* display: flex; */
+    width: 938px;
+    height: 140px;
+    background: $bg-item;
+    margin-bottom: 26px;
+    border-radius: 5px;
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.post-item__header {
+    position:relative;
+    display: flex;
+    height: 46px;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin: 0px 16px 0px 0px;
+    /* padding-top: 5px; */
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    /* line-height: 22px; */
+}
+
+.title {
+    display: inline-block;
+    padding-left: 9px;
+    padding-top: 10px;
+    color: $btn-blue;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    cursor: pointer;
+
+}
+
+.title:hover {
+    opacity: 0.8;
+} 
+
+.likes-group {
+    display: flex;
+    margin-left: 13px;
+    margin-top: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.heart {
+height: 16px;
+width: 16px;
+background-repeat: no-repeat;
+}
+
+.likes-counter {
+    display: inline-block;
+    padding: 4px;
+}
+
+.user-info {
+    position: absolute;
+    right: 72px;
+    text-align: center;
+    padding-top: 18px;
+}
+
+.user-name {
+    // @include text;
+}
+
+.avatar {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    background-repeat:  no-repeat;
+    background-position: center/cover;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 3px;
+    margin-left: 16px;
+    text-align: center;
+    border: 1px solid $text-secondary;
+    border-radius: 2px;
+    padding: 2px 5px;
+}
+
+.post-item__article {
+    width: 682px;
+    height: 45px;
+    margin-left: 19px;
+    margin-top: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: $text-main;
+    word-wrap: break-word;
+}
+
+.post-item__article p {
+    padding-bottom: 24px;
+}

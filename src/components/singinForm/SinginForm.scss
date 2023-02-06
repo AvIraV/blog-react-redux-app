@@ -1,0 +1,114 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+.singin-container {
+    width: 384px;
+    height: 374px;
+    background: $bg-item;
+    border: 1px solid $border-light-grey;
+    box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198), 0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035), 0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725), 0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 59px;
+    font-family: 'Roboto';
+    font-style: normal;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 48px 36px;
+}
+
+h2 {
+
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: $form-text;
+    padding-bottom: 21px;
+}
+
+.singin-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    /* margin-top: 21px; */
+}
+
+.singin-form-group:first-child {
+    margin-top: 0px;
+}
+
+label {
+    @include text-label; 
+    color: $form-text;
+    padding-bottom: 3px;
+}
+
+.form-input {
+    width: 320px;
+    height: 40px;
+    background: $bg-item;
+    padding-left: 12px;
+    border: 1px solid $border-light-grey;
+    border-radius: 4px;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: $text-main;
+
+}
+
+input::placeholder {
+    color: $input-bg;
+    opacity: 0.5;
+ }
+
+
+.checkbox-group {
+    margin-top: 9px;
+}
+
+.checkbox-label {
+    @include text-label; 
+    line-height: 22px;
+    color: $checkbox-label;
+}
+
+.checkbox {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.btn {
+    text-align: center;
+    align-items: center;
+    width: 319px;
+    height: 40px;
+    padding: 8px 16px;
+    margin-top: 9px;
+    background: $btn-blue;
+    border-radius: 4px;
+    border: 1px solid $btn-blue;
+    color: $bg-item;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+.form-group__info,
+.form-group__info a {
+    text-align: center;
+    font-weight: 400;
+    font-size: 12px;
+    color: $text-light-grey;
+}
+
+.form-group__info a {
+    color: $text-title;
+}

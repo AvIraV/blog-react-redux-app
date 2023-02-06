@@ -1,0 +1,96 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+.header {
+    width: 1440px;
+    height: 80px;
+    background: $bg-item;
+    margin: 0 auto;
+}
+
+.navbar {
+    display: flex;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 22px;
+    align-items: center;
+}
+
+.logo,
+a {
+    font-weight: 400;
+    font-size: 18px;
+    color: $text-dark;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    margin-right: 22px;
+}
+
+.navbar-item,
+.navbar-item-authorised {
+    padding-right: 19px;
+}
+
+.navbar-item-sing-up {
+    color: $border-green;
+    border: 1px solid $border-green;
+    border-radius: 5px;
+    padding: 6px 10px;
+}
+
+.authorised {
+    margin-top: 10px;
+}
+
+.navbar-item-create-article {
+    font-size: 14px;
+    color: $border-green;
+    border: 1px solid $border-green;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.user-info-authorised {
+    display: flex;
+    position: relative;
+}
+
+.user-avatar {
+    position: absolute;
+    right: -78px;
+    top: -7px;
+    margin-left: 13px;
+    margin-right: 13px;
+
+    background-repeat: no-repeat;
+    background-position: center/cover;
+    height: 46px;
+    width: 46px;
+    border-radius: 50%;
+
+}
+
+.navbar-item-logout {
+    border: 1px solid $text-main;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-family: 'Inter';
+    @include text;
+    cursor: pointer;
+    background: $bg-item;
+    margin-left: 86px;
+    margin-top: -5px;
+}
+
+.logo:hover,
+.user-info-authorised:hover,
+.navbar-item-create-article:hover,
+.navbar-item-logout:hover,
+.navbar-item-sing-in:hover,
+.navbar-item-sing-up:hover {
+    opacity: 0.75;
+}
