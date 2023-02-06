@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Header from '../header/Header'
 import ArticlesList from '../articlesList/ArticlesList'
 import SingleArticle from '../singleArticle/SingleArticle'
-import SingupForm from '../singupForm/SingupForm'
-import SinginForm from '../singinForm/SinginForm'
+import SignupForm from '../signupForm/SignupForm'
+import SigninForm from '../signinForm/SigninForm'
 import EditProfileForm from '../editProfileForm/EditProfileForm'
 import EditArticleForm from '../editArticleForm/EditArticleForm'
 import CreateArticleForm from '../createArticleForm/CreateArticleForm'
@@ -27,10 +27,10 @@ function App() {
             <SingleArticle />
           </Route>
           <Route exact path="/sign-up">
-            <SingupForm />
+            <SignupForm />
           </Route>
           <Route exact path="/sign-in">
-            <SinginForm />
+            <SigninForm />
           </Route>
           <Route exact path="/profile">
             <EditProfileForm />

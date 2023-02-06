@@ -25,7 +25,7 @@ export const fetchSingleArticle = createAsyncThunk('articles/fetchSingleArticle'
   })
 })
 
-export const fetchSingUp = createAsyncThunk('authorisation/fetchSingUp', async (body) => {
+export const fetchSignUp = createAsyncThunk('authorisation/fetchSignUp', async (body) => {
   return await fetch(`${_apiBase}users`, {
     method: 'POST',
     headers: {
@@ -38,7 +38,7 @@ export const fetchSingUp = createAsyncThunk('authorisation/fetchSingUp', async (
   })
 })
 
-export const fetchSingIn = createAsyncThunk('authorisation/fetchSingIn', async (body) => {
+export const fetchSignIn = createAsyncThunk('authorisation/fetchSifetchSignInngIn', async (body) => {
   return await fetch(`${_apiBase}users/login`, {
     method: 'POST',
     headers: {

@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 
-import { fetchSingUp } from '../../services/BlogService'
-import './SingupForm.scss'
+import { fetchSignUp } from '../../services/BlogService'
+import './SignupForm.scss'
 
-const SingupForm = () => {
+const SignupForm = () => {
   const { serverErrors, isLoggedIn } = useSelector((state) => state.authorisation)
   const dispatch = useDispatch()
   const {
@@ -27,7 +27,7 @@ const SingupForm = () => {
         password: data.password,
       },
     }
-    dispatch(fetchSingUp(JSON.stringify(body)))
+    dispatch(fetchSignUp(JSON.stringify(body)))
     reset()
   }
 
@@ -161,4 +161,4 @@ const SingupForm = () => {
   )
 }
 
-export default SingupForm
+export default SignupForm

@@ -2,11 +2,11 @@ import { useForm } from 'react-hook-form'
 import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchSingIn } from '../../services/BlogService'
+import { fetchSignIn } from '../../services/BlogService'
 
-import './SinginForm.scss'
+import './SigninForm.scss'
 
-const SinginForm = () => {
+const SigninForm = () => {
   const { isLoggedIn, serverErrors } = useSelector((state) => state.authorisation)
   const dispatch = useDispatch()
   const {
@@ -16,7 +16,7 @@ const SinginForm = () => {
   } = useForm()
 
   const onSubmit = (data) => {
-    dispatch(fetchSingIn(JSON.stringify({ user: data })))
+    dispatch(fetchSignIn(JSON.stringify({ user: data })))
   }
 
   return (
@@ -76,4 +76,4 @@ const SinginForm = () => {
   )
 }
 
-export default SinginForm
+export default SigninForm

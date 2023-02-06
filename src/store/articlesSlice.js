@@ -84,9 +84,9 @@ const articlesSlice = createSlice({
         state.isDeleted = true
       })
       .addCase(fetchChangeFavorite.fulfilled, (state, action) => {
-        state.articlesLoadingStatus = 'fetched'
-        state.focusFavoriteArticle === 5 ? (state.singleArticle = action.payload.article) : null
-        state.articlesList[state.focusFavoriteArticle] = action.payload.article
+        state.focusFavoriteArticle === 5
+          ? (state.singleArticle = action.payload.article)
+          : (state.articlesList[state.focusFavoriteArticle] = action.payload.article)
       })
       .addDefaultCase(() => {})
   },

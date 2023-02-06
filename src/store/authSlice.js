@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchSingUp, fetchSingIn, fetchProfile, fetchEditProfile } from '../services/BlogService'
+import { fetchSignUp, fetchSignIn, fetchProfile, fetchEditProfile } from '../services/BlogService'
 import { setSessionData } from '../components/utils/setSessionData'
 
 const initialState = {
@@ -29,11 +29,11 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchSingUp.pending, (state) => {
+      .addCase(fetchSignUp.pending, (state) => {
         state.authLoadingStatus = 'fetching'
         state.serverErrors = {}
       })
-      .addCase(fetchSingUp.fulfilled, (state, action) => {
+      .addCase(fetchSignUp.fulfilled, (state, action) => {
         state.authLoadingStatus = 'fetched'
         state.user = action.payload.user
         if (action.payload.user) {
@@ -41,14 +41,14 @@ const authSlice = createSlice({
         }
         state.serverErrors = action.payload.errors
       })
-      .addCase(fetchSingUp.rejected, (state) => {
+      .addCase(fetchSignUp.rejected, (state) => {
         state.authLoadingStatus = 'error'
       })
-      .addCase(fetchSingIn.pending, (state) => {
+      .addCase(fetchSignIn.pending, (state) => {
         state.authLoadingStatus = 'fetching'
         state.serverErrors = {}
       })
-      .addCase(fetchSingIn.fulfilled, (state, action) => {
+      .addCase(fetchSignIn.fulfilled, (state, action) => {
         state.authLoadingStatus = 'fetched'
         state.user = action.payload.user
         if (action.payload.user) {
@@ -56,7 +56,7 @@ const authSlice = createSlice({
         }
         action.payload.errors ? (state.serverErrors = action.payload.errors) : (state.serverErrors = {})
       })
-      .addCase(fetchSingIn.rejected, (state) => {
+      .addCase(fetchSignIn.rejected, (state) => {
         state.authLoadingStatus = 'error'
       })
       .addCase(fetchProfile.pending, (state) => {
