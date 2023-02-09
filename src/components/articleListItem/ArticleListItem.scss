@@ -84,7 +84,7 @@ background-repeat: no-repeat;
     border-radius: 50%;
 }
 
-.tag {
+.tag, .no-tags {
     display: inline-block;
     margin-top: 3px;
     margin-left: 16px;
@@ -92,6 +92,10 @@ background-repeat: no-repeat;
     border: 1px solid $text-secondary;
     border-radius: 2px;
     padding: 2px 5px;
+}
+
+.no-tags {
+    opacity: 100%;
 }
 
 .post-item__article {

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchEditArticle } from '../../services/BlogService'
+import path from '../../assets/path'
 
 import './EditArticleForm.scss'
 
@@ -93,7 +94,7 @@ const EditArticleForm = () => {
             placeholder="Text"
             maxLength={16}
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.description && <p>{errors?.description?.message}</p>}
           </span>
         </div>
@@ -108,7 +109,7 @@ const EditArticleForm = () => {
             placeholder="Text"
             rows="9"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.body && <p>{errors?.body?.message}</p>}
           </span>
         </div>
@@ -134,7 +135,7 @@ const EditArticleForm = () => {
                 </button>
               </label>
               {errors?.tagList === undefined || errors?.tagList[index] === undefined ? null : (
-                <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+                <span className="form-error">
                   {errors?.tagList[index].tag && <p>{errors?.tagList[index].tag.message}</p>}
                 </span>
               )}
@@ -154,8 +155,8 @@ const EditArticleForm = () => {
         </button>
         <input type="submit" className="btn btn-send" value="Send" />
       </form>
-      {isLoggedIn ? null : <Redirect to="/sign-in" />}
-      {isEdited ? <Redirect to={`/articles/${singleArticle.slug}`} /> : null}
+      {isLoggedIn ? null : <Redirect to={path.signIn} />}
+      {isEdited ? <Redirect to={`${path.articles}/${singleArticle.slug}`} /> : null}
     </div>
   )
 }

@@ -11,6 +11,8 @@ import { onFocusFavoriteArticle } from '../../store/articlesSlice'
 import Loader from '../loader/Loader'
 import liked from '../../assets/redHeart.png'
 import notliked from '../../assets/white-heart.png'
+import avatar from '../../assets/avatar.png'
+import path from '../../assets/path'
 import './SingleArticle.scss'
 
 const SingleArticle = () => {
@@ -71,7 +73,14 @@ const SingleArticle = () => {
               <p className="user-name">{author === undefined ? null : author.username}</p>
               <p className="article-date">{createdAt}</p>
             </span>
-            <img src={author === undefined ? null : author.image} alt="avatar" className="avatar" />
+            <img
+              src={author === undefined ? null : author.image}
+              alt="avatar"
+              onError={(e) => {
+                e.target.src = avatar
+              }}
+              className="avatar"
+            />
           </header>
           <div className="tag-list">
             {tagList?.map((tag, index) => {
@@ -90,7 +99,7 @@ const SingleArticle = () => {
                 <button className="article-btn-delete" onClick={showDeleteConfirm}>
                   Delete
                 </button>
-                <Link className="article-btn-edit" to={`/articles/${slug}/edit`}>
+                <Link className="article-btn-edit" to={`${path.articles}/${slug}/edit`}>
                   Edit
                 </Link>
               </div>
@@ -103,7 +112,7 @@ const SingleArticle = () => {
         </div>
       ) : null}
 
-      {isDeleted ? <Redirect to="/articles" /> : null}
+      {isDeleted ? <Redirect to={path.articles} /> : null}
     </>
   )
 }

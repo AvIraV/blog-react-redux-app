@@ -1,3 +1,9 @@
+@import '../../../style/mixins.scss';
+
 textarea {
     width: 874px;
+}
+
+.form-error {
+    @include form-error;
 }

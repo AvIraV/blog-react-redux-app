@@ -2,9 +2,11 @@
 import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+//import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { fetchEditProfile } from '../../services/BlogService'
+import path from '../../assets/path'
 
 import './EditProfileForm.scss'
 
@@ -13,8 +15,10 @@ const EditProfileForm = () => {
   const dispatch = useDispatch()
   const {
     register,
+    //unregister,
     formState: { errors },
     reset,
+    //watch,
     handleSubmit,
   } = useForm({
     defaultValues: {
@@ -29,20 +33,12 @@ const EditProfileForm = () => {
   }, [])
 
   const onSubmit = (data) => {
-    const body = {
-      user:
-        data.image === ''
-          ? {
-            username: data.username,
-            email: data.email,
-            password: data.password,
-          }
-          : {
-            username: data.username,
-            email: data.email,
-            password: data.password,
-            image: data.image,
-          },
+    let body = {user: {}}
+    for ( let key in data) {
+      if (data[key] === '') {
+        continue
+      }
+      body.user[key] = data[key]
     }
     dispatch(fetchEditProfile({ body, token: user.token }))
   }
@@ -71,13 +67,13 @@ const EditProfileForm = () => {
             placeholder="Username"
             autoFocus
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.username && <p>{errors?.username?.message || 'Error!'}</p>}
           </span>
         </div>
         <div className="edit-form-group">
           <label htmlFor="email-adress">Email adress</label>
-          <input
+          <input 
             {...register('email', {
               required: 'Please fill out this feild.',
               pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -87,7 +83,7 @@ const EditProfileForm = () => {
             name="email"
             placeholder="Email address"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.email && <p>{errors?.email?.message || 'Email is invalid'}</p>}
           </span>
         </div>
@@ -95,7 +91,7 @@ const EditProfileForm = () => {
           <label htmlFor="password">New Password</label>
           <input
             {...register('password', {
-              required: 'Please fill out this feild.',
+              // required: 'Please fill out this feild.',
               minLength: {
                 value: 6,
                 message: 'Your password needs to be at least 6 characters',
@@ -110,7 +106,7 @@ const EditProfileForm = () => {
             name="password"
             placeholder="Password"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
           </span>
         </div>
@@ -128,7 +124,7 @@ const EditProfileForm = () => {
             name="image"
             placeholder="Avatar image"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.image && <p>{errors?.image?.message || 'Error!'}</p>}
           </span>
         </div>
@@ -136,7 +132,7 @@ const EditProfileForm = () => {
           <button className="btn">Save</button>
         </div>
       </form>
-      {isLoggedIn ? null : <Redirect to="/sign-in" />}
+      {isLoggedIn ? null : <Redirect to={path.signIn} />}
     </div>
   )
 }

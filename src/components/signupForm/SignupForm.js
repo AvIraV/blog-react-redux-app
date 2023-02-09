@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom'
 
 import { fetchSignUp } from '../../services/BlogService'
+import path from '../../assets/path'
 import './SignupForm.scss'
 
 const SignupForm = () => {
@@ -56,7 +57,7 @@ const SignupForm = () => {
             placeholder="Username"
             autoFocus
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {(errors?.username || serverErrors?.username) && (
               <p>{errors?.username?.message || `This username ${serverErrors?.username}`}</p>
             )}
@@ -77,7 +78,7 @@ const SignupForm = () => {
             name="email"
             placeholder="Email address"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {(errors?.email || serverErrors?.email) && (
               <p>{errors?.email?.message || `This email ${serverErrors?.email}`}</p>
             )}
@@ -102,9 +103,7 @@ const SignupForm = () => {
             name="password"
             placeholder="Password"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}
-          </span>
+          <span className="form-error">{errors?.password && <p>{errors?.password?.message || 'Error!'}</p>}</span>
         </div>
         <div className="form-group">
           <label htmlFor="passwordRepeat">Repeat Password</label>
@@ -125,7 +124,7 @@ const SignupForm = () => {
             type="password"
             placeholder="Password"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {errors?.passwordRepeat && <p>{errors?.passwordRepeat?.message || 'Password must match!'}</p>}
           </span>
         </div>
@@ -142,9 +141,7 @@ const SignupForm = () => {
             />
             I agree to the processing of my personal information
           </label>
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.checkbox && <p>{errors?.checkbox?.message || 'Error'}</p>}
-          </span>
+          <span className="form-error">{errors?.checkbox && <p>{errors?.checkbox?.message || 'Error'}</p>}</span>
         </div>
         <div className="form-group">
           <input type="submit" className="btn" value="Create" />
@@ -156,7 +153,7 @@ const SignupForm = () => {
           </p>
         </div>
       </form>
-      {isLoggedIn ? <Redirect to="/articles" /> : null}
+      {isLoggedIn ? <Redirect to={path.articles} /> : null}
     </div>
   )
 }

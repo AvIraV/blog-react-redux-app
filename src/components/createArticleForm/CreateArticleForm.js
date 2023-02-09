@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchCreateArticle } from '../../services/BlogService'
+import path from '../../assets/path'
 
 import './CreateArticleForm.scss'
 
@@ -61,9 +62,7 @@ const CreateArticleForm = () => {
             placeholder="Title"
             maxLength={60}
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.title && <p>{errors?.title?.message}</p>}
-          </span>
+          <span className="form-error">{errors?.title && <p>{errors?.title?.message}</p>}</span>
         </div>
         <div className="form-group">
           <label htmlFor="description">Short description</label>
@@ -80,9 +79,7 @@ const CreateArticleForm = () => {
             name="description"
             placeholder="Text"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.description && <p>{errors?.description?.message}</p>}
-          </span>
+          <span className="form-error">{errors?.description && <p>{errors?.description?.message}</p>}</span>
         </div>
         <div className="form-group">
           <label htmlFor="body">Text</label>
@@ -95,9 +92,7 @@ const CreateArticleForm = () => {
             placeholder="Text"
             rows="9"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.body && <p>{errors?.body?.message}</p>}
-          </span>
+          <span className="form-error">{errors?.body && <p>{errors?.body?.message}</p>}</span>
         </div>
         {fields.map((field, index) => {
           return (
@@ -121,7 +116,7 @@ const CreateArticleForm = () => {
                 </button>
               </label>
               {errors?.tagList === undefined || errors?.tagList[index] === undefined ? null : (
-                <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+                <span className="form-error">
                   {errors?.tagList[index].tag && <p>{errors?.tagList[index].tag.message}</p>}
                 </span>
               )}
@@ -141,8 +136,8 @@ const CreateArticleForm = () => {
         </button>
         <input type="submit" className="btn btn-send" value="Send" />
       </form>
-      {isLoggedIn ? null : <Redirect to="/sign-in" />}
-      {isCreated ? <Redirect to="/articles" /> : null}
+      {isLoggedIn ? null : <Redirect to={path.signIn} />}
+      {isCreated ? <Redirect to={path.articles} /> : null}
     </div>
   )
 }

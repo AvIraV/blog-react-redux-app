@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchSignIn } from '../../services/BlogService'
+import path from '../../assets/path'
 
 import './SigninForm.scss'
 
@@ -37,9 +38,7 @@ const SigninForm = () => {
             name="email"
             placeholder="Email address"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
-            {errors?.email && <p>{errors?.email?.message || 'Email is invalid'}</p>}
-          </span>
+          <span className="form-error">{errors?.email && <p>{errors?.email?.message || 'Email is invalid'}</p>}</span>
         </div>
         <div className="singin-form-group">
           <label htmlFor="password">Password</label>
@@ -52,7 +51,7 @@ const SigninForm = () => {
             name="password"
             placeholder="Password"
           />
-          <span style={{ fontSize: 12, color: 'red', paddingTop: 3 }}>
+          <span className="form-error">
             {(errors?.password || (serverErrors === {} || undefined ? null : serverErrors['email or password'])) && (
               <p>
                 {errors?.password?.message ||
@@ -69,7 +68,7 @@ const SigninForm = () => {
             Don’t have an account?
             <Link to="/sign-up"> Sign Up</Link>
           </p>
-          {isLoggedIn ? <Redirect to="/articles" /> : null}
+          {isLoggedIn ? <Redirect to={path.articles} /> : null}
         </div>
       </form>
     </div>

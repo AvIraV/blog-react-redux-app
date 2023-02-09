@@ -8,6 +8,7 @@ import SigninForm from '../signinForm/SigninForm'
 import EditProfileForm from '../editProfileForm/EditProfileForm'
 import EditArticleForm from '../editArticleForm/EditArticleForm'
 import CreateArticleForm from '../createArticleForm/CreateArticleForm'
+import path from '../../assets/path'
 
 import './App.scss'
 
@@ -18,27 +19,27 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            <Redirect to="/articles" />
+            <Redirect to={path.articles} />
           </Route>
-          <Route exact path="/articles">
+          <Route exact path={path.articles}>
             <ArticlesList />
           </Route>
-          <Route exact path="/articles/:articleId">
+          <Route exact path={path.singleArticle}>
             <SingleArticle />
           </Route>
-          <Route exact path="/sign-up">
+          <Route exact path={path.signUp}>
             <SignupForm />
           </Route>
-          <Route exact path="/sign-in">
+          <Route exact path={path.signIn}>
             <SigninForm />
           </Route>
-          <Route exact path="/profile">
+          <Route exact path={path.profile}>
             <EditProfileForm />
           </Route>
-          <Route exact path="/new-article">
+          <Route exact path={path.newArticle}>
             <CreateArticleForm />
           </Route>
-          <Route exact path="/articles/:articleId/edit">
+          <Route exact path={path.edit}>
             <EditArticleForm />
           </Route>
           <Route render={() => <h2 className="error-message">Page not found</h2>}></Route>

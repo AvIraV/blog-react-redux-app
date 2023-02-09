@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { onLogOut, onLogIn } from '../../store/authSlice'
 import { fetchProfile } from '../../services/BlogService'
 import { getSessionData } from '../utils/setSessionData'
+import avatar from '../../assets/avatar.png'
+import path from '../../assets/path'
 import './Header.scss'
 
 const Header = () => {
@@ -33,12 +35,12 @@ const Header = () => {
         {!isLoggedIn ? (
           <ul>
             <li className="navbar-item">
-              <Link className="navbar-item-sing-in" to="/sign-in">
+              <Link className="navbar-item-sing-in" to={path.signIn}>
                 Sign In
               </Link>
             </li>
             <li>
-              <Link className="navbar-item-sing-up" to="/sign-up">
+              <Link className="navbar-item-sing-up" to={path.signUp}>
                 Sign Up
               </Link>
             </li>
@@ -47,15 +49,22 @@ const Header = () => {
           <div className="authorised">
             <ul>
               <li className="navbar-item-authorised">
-                <Link className="navbar-item-create-article" to="/new-article">
+                <Link className="navbar-item-create-article" to={path.newArticle}>
                   Create article
                 </Link>
               </li>
               <li>
-                <Link className="navbar-item-user" to="/profile">
+                <Link className="navbar-item-user" to={path.profile}>
                   <div className="user-info-authorised">
                     <p>{user.username}</p>
-                    <img src={profile.image} className="user-avatar" alt="avatar" />
+                    <img
+                      src={profile.image}
+                      className="user-avatar"
+                      onError={(e) => {
+                        e.target.src = avatar
+                      }}
+                      alt="avatar"
+                    />
                   </div>
                 </Link>
               </li>
