@@ -92,7 +92,6 @@ const EditArticleForm = () => {
             className="form-input-new"
             name="description"
             placeholder="Text"
-            maxLength={16}
           />
           <span className="form-error">
             {errors?.description && <p>{errors?.description?.message}</p>}
